@@ -1,4 +1,5 @@
 import { postData } from "./utils/httpReq.js";
+import { setCookie } from "./utils/cookie.js";
 
 const inputBox = document.querySelectorAll("input");
 const loginButton = document.querySelector("button");
@@ -12,6 +13,9 @@ const submitHandler = async (event) => {
   const password = inputBox[1].value;
   const data = { username, password };
   const response = await postData("auth/login", data);
+  setCookie(response.token);
+
+  location.assign("./");
 };
 
 loginButton.addEventListener("click", submitHandler);
