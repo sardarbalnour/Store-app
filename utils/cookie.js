@@ -3,4 +3,17 @@ const setCookie = (data) => {
   // path in order to use in every page and max age is by second
 };
 
-export { setCookie };
+const getCookie = () => {
+  const cookie = document.cookie;
+
+  if (cookie) {
+    const cookieArray = cookie.split("=");
+    return {
+      [cookieArray[0]]: cookieArray[1],
+    };
+  } else {
+    return false;
+  }
+};
+
+export { setCookie, getCookie };
