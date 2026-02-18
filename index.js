@@ -48,7 +48,7 @@ const initHandler = async () => {
   }
 
   const allProducts = await getData("products");
-  showProducts();
+  showProducts(allProducts);
 };
 
 document.addEventListener("DOMContentLoaded", initHandler);
