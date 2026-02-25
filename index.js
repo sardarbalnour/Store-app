@@ -3,6 +3,8 @@ import { getData } from "./utils/httpReq.js";
 import { shortenText } from "./utils/stringFunc.js";
 
 let allProducts = null;
+let search = "";
+let category = "all";
 
 const loginButton = document.getElementById("login");
 const dashboardButton = document.getElementById("dashboard");
@@ -57,18 +59,28 @@ const initHandler = async () => {
 };
 
 const searchHandler = () => {
-  const query = inputBox.value.trim().toLowerCase();
+  search = inputBox.value.trim().toLowerCase();
 
-  if (!query) return showProducts(allProducts);
+  filterProducts();
+};
 
+const filterProducts = () => {
   const filteredProducts = allProducts.filter((product) => {
-    product.title.toLowerCase().includes(query);
+    if (category === "all") {
+      return product.title.toLocaleLowerCase().includes(search);
+    } else {
+      return (
+        product.title.toLocaleLowerCase().includes(search) &&
+        product.category.toLocaleLowerCase() === category
+      );
+    }
   });
+
   showProducts(filteredProducts);
 };
 
 const filterHandler = (event) => {
-  const category = event.target.innerText.toLowerCase();
+  category = event.target.innerText.toLowerCase();
 
   listItems.forEach((li) => {
     if (li.innerText.toLocaleLowerCase() === category) {
@@ -78,12 +90,7 @@ const filterHandler = (event) => {
     }
   });
 
-  if (category === "all") return showProducts(allProducts);
-
-  const filteredProducts = allProducts.filter(
-    (product) => product.category.toLocaleLowerCase() === category
-  );
-  showProducts(filteredProducts);
+  filterProducts();
 };
 
 document.addEventListener("DOMContentLoaded", initHandler);
