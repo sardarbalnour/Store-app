@@ -43,3 +43,47 @@ header button:hover {
   color: #fff;
   background-color: var(--color-error);
 }
+
+h1 {
+  margin: 50px 0 40px;
+}
+
+#card {
+  display: flex;
+  justify-content: space-between;
+  background-color: #fff;
+  align-items: center;
+  padding: 20px 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 50px;
+}
+
+#card h3 {
+  background-color: var(--color-primary);
+  color: #fff;
+  font-size: 1.4rem;
+  font-weight: 600;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 8px;
+}
+
+#card div{
+  background-color: var(--color-background);
+  border-radius: 10px;
+  padding: 15px;
+}
+
+#card p {
+  color: var(--color-primary);
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 20px;
+}
+
+#card i {
+  margin-right: 5px;
+}
