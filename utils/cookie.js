@@ -16,4 +16,9 @@ const getCookie = () => {
   }
 };
 
-export { setCookie, getCookie };
+// remove the token cookie by setting it to expired
+const deleteCookie = () => {
+  document.cookie = "token=; max-age=0; path=/";
+};
+
+export { setCookie, getCookie, deleteCookie };

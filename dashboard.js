@@ -1,7 +1,9 @@
 import authHandler from "./utils/authorizathion.js";
 import { getData } from "./utils/httpReq.js";
+import { deleteCookie } from "./utils/cookie.js";
 
 const mainContent = document.getElementById("container");
+const logoutButton = document.querySelector("button");
 
 const renderUsers = (users) => {
   mainContent.innerHTML = "";
@@ -50,4 +52,11 @@ const initHandler = async () => {
   renderUsers(users);
 };
 
+const logoutHandler = () => {
+  // remove the auth token stored as a cookie
+  deleteCookie();
+  window.location.href = "index.html";
+};
+
 document.addEventListener("DOMContentLoaded", initHandler);
+logoutButton.addEventListener("click", logoutHandler);
